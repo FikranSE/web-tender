@@ -74,6 +74,12 @@
                 {{ Session::get('success') }}
             </div>
         @endif
+        @if (Session::has('error'))
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+                {{ Session::get('error') }}
+            </div>
+        @endif
         <button type="button" class="btn btn-info mb-3 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Buat penawaran
         </button>
@@ -156,9 +162,13 @@
                             </tr>
                             <tr>
                                 <th scope="row">Hasil evaluasi</th>
-                                <td><a href=""
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Hasil
-                                        evaluasi</a></td>
+                                <td>
+                                    <a href="{{ route('detailTender', $tender->id_tender) }}"
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                        Hasil evaluasi
+                                    </a>
+
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row">Satuan Kerja</th>

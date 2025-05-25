@@ -60,7 +60,7 @@ class AuthController extends Controller
  
         $request->session()->regenerate();
  
-        if (auth()->user()->role == 'provider') {
+        if (auth()->user()->role == 'admin') {
             return redirect()->route('admin/home');
         } else {
             return redirect()->route('listTender');

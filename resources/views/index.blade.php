@@ -42,7 +42,7 @@
                                             </div>
                                         </div>
                                         <div class="text-end mt-4">
-                                            <a href="detailTender" class="btn btn-detail"
+                                            <a href="{{ route('detailTender', $td->id_tender) }}" class="btn btn-detail"
                                                 style="background-color: #17a2b8; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s;">Lihat
                                                 Detail <i class="fas fa-arrow-right"></i></a>
                                         </div>

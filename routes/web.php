@@ -8,6 +8,7 @@ use App\Http\Controllers\PenawarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EvaluasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::middleware(['auth', 'user-access:user'])->group(function () {
 
   Route::get('/profile', [UserController::class, 'userprofile'])->name('profile');
-  Route::get('/detailTender', [UserController::class, 'detailTender'])->name('detailTender');
+  Route::get('/detailTender/{id}', [UserController::class, 'detailTender'])->name('detailTender');
   Route::get('/listTender', [UserController::class, 'listTender'])->name('listTender');
   Route::get('/informasiTender/{id}', [UserController::class, 'informasiTender'])->name('informasiTender');
   Route::get('/user/tender/{tender}/downloadDocPem', [TenderController::class, 'downloadDocPem'])
@@ -72,12 +73,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
   Route::delete('/admin/tender/destroy/{id}', [TenderController::class, 'destroy'])->name('admin/tender/destroy');
   Route::get('/admin/tender/{tender}/downloadDocPem', [TenderController::class, 'downloadDocPem'])
     ->name('admin.tender.downloadDocPem');
-    Route::get('/admin/tender/{tender}/downloadBerita', [TenderController::class, 'downloadBerita'])
+  Route::get('/admin/tender/{tender}/downloadBerita', [TenderController::class, 'downloadBerita'])
     ->name('admin.tender.downloadBerita');
 
-    //penawaran
-    Route::resource('/penawaran', PenawarController::class);
+  //penawaran
+  Route::resource('penawaran', PenawarController::class);
 
-    
-  
+  // evaluasi
+  Route::get('/evaluasi/{id}', [EvaluasiController::class, 'show'])->name('evaluasi.show');
+  Route::post('/evaluasi', [EvaluasiController::class, 'store'])->name('evaluasi.store');
 });

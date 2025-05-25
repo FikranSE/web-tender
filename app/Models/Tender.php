@@ -14,13 +14,14 @@ class Tender extends Model
         return $this->belongsTo(Paket::class, 'id_paket');
     }
 
-    public function peserta()
+    public function penawar()
     {
-        return $this->hasMany(Peserta::class, 'id_tender');
+        return $this->hasMany(User::class, 'id');
     }
 
     public function hasilEvaluasi()
     {
-        return $this->hasMany(HasilEvaluasi::class, 'id_tender');
+        return $this->hasMany(Penawar::class, 'id');
     }
+    
 }
